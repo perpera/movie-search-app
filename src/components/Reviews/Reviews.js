@@ -12,7 +12,7 @@ import {
   ReviewAuthor,
   NoReviewsMsg,
 } from 'components/Reviews/Reviews.styled';
-import { smoothScroll } from 'helpers/SmoothScroll';
+import { smoothScroll } from '../../helpers/SmoothScroll';
 
 const Reviews = () => {
   const { movieId } = useParams();
