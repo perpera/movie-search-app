@@ -1,29 +1,30 @@
-import {
-  CastCharacter,
-  CastImg,
-  CastItem,
-  CastList,
-  CastName,
-  CastWrapper,
-  NoCast,
-} from './Cast.styled';
-import { useState, useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import { getCast } from 'movies-api';
-import { Container } from 'components/SharedLayout/SharedLayout.styled';
 import { Loader } from 'components/Loader/Loader';
-import { notification } from 'tools/notification';
-import actorImg from '../../img/def_avatar.png';
-import { smoothScroll } from 'tools/SmoothScroll';
+import { getCast } from 'service/movies-api';
+import actorImage from '../../images/def_avatar.png';
+import { notification } from 'helpers/notification';
+import { Container } from 'components/App/App.styled';
+import {
+  CastWrapper,
+  CastList,
+  CastItem,
+  CastImgWrap,
+  CastName,
+  CastCharacter,
+  NoCastMsg,
+} from './Cast.styled';
+import { smoothScroll } from 'helpers/SmoothScroll';
 
 const Cast = () => {
+  const { movieId } = useParams();
+
   const [cast, setCast] = useState([]);
   const [loader, setLoader] = useState(false);
 
-  const { movieId } = useParams();
-
   useEffect(() => {
     setLoader(true);
+
     const fetchCast = async () => {
       try {
         const castData = await getCast(movieId);
@@ -33,33 +34,37 @@ const Cast = () => {
         notification(message);
       } finally {
         setLoader(false);
+
         smoothScroll('castList');
       }
     };
+
     fetchCast();
   }, [movieId]);
 
-  const showDefImg = (actorSrc, defImg) => {
+  const showDefaultImage = (actorSrc, defaultImg) => {
     const actorUrl = `https://image.tmdb.org/t/p/w500${actorSrc}`;
-    return actorSrc ? actorUrl : defImg;
+    return actorSrc ? actorUrl : defaultImg;
   };
 
   return (
-    <CastWrapper id={'castList'}>
+    <CastWrapper name={'castList'}>
       <Container>
         {loader && <Loader />}
         {cast.length > 0 ? (
           <CastList>
             {cast.map(({ id, name, character, profile_path }) => (
               <CastItem key={id}>
-                <CastImg $actor={showDefImg(profile_path, actorImg)} />
+                <CastImgWrap
+                  $actor={showDefaultImage(profile_path, actorImage)}
+                ></CastImgWrap>
                 <CastName>{name}</CastName>
                 <CastCharacter>{character}</CastCharacter>
               </CastItem>
             ))}
           </CastList>
         ) : (
-          <NoCast></NoCast>
+          <NoCastMsg>No information regarding this movie's cast</NoCastMsg>
         )}
       </Container>
     </CastWrapper>

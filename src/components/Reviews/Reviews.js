@@ -1,24 +1,24 @@
-import {
-  ReviewsAuthor,
-  ReviewsItem,
-  ReviewsList,
-  ReviewsWrap,
-  NoReviews,
-} from './Reviews.styled';
-import { useState, useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import { getReviews } from 'movies-api';
-import { Container } from 'components/SharedLayout/SharedLayout.styled';
 import { Loader } from 'components/Loader/Loader';
-import { smoothScroll } from 'tools/SmoothScroll';
-import { notification } from 'tools/notification';
-import { CiUser } from 'react-icons/ci';
+import { IoMdPerson } from 'react-icons/io';
+import { getReviews } from 'service/movies-api';
+import { notification } from 'helpers/notification';
+import { Container } from 'components/App/App.styled';
+import {
+  ReviewsWrapper,
+  ReviewList,
+  ReviewItem,
+  ReviewAuthor,
+  NoReviewsMsg,
+} from 'components/Reviews/Reviews.styled';
+import { smoothScroll } from 'helpers/SmoothScroll';
 
-export const Reviews = () => {
+const Reviews = () => {
+  const { movieId } = useParams();
+
   const [reviews, setReviews] = useState([]);
   const [loader, setLoader] = useState(false);
-
-  const { movieId } = useParams();
 
   useEffect(() => {
     setLoader(true);
@@ -26,13 +26,16 @@ export const Reviews = () => {
     const fetchReviews = async () => {
       try {
         const { results } = await getReviews(movieId);
+
         setReviews(results);
+
         return results;
       } catch ({ message }) {
         notification(message);
       } finally {
         setLoader(false);
-        smoothScroll('reviewsWrap');
+
+        smoothScroll('reviewsWrapper');
       }
     };
 
@@ -40,25 +43,27 @@ export const Reviews = () => {
   }, [movieId]);
 
   return (
-    <ReviewsWrap id="reviewsWrap">
+    <ReviewsWrapper name="reviewsWrapper">
       <Container>
         {loader && <Loader />}
         {reviews.length > 0 ? (
-          <ReviewsList>
+          <ReviewList>
             {reviews.map(({ id, author, content }) => (
-              <ReviewsItem key={id}>
-                <ReviewsAuthor>
-                  <CiUser />
+              <ReviewItem key={id}>
+                <ReviewAuthor>
+                  <IoMdPerson />
                   {author}
-                </ReviewsAuthor>
+                </ReviewAuthor>
                 <p>{content}</p>
-              </ReviewsItem>
+              </ReviewItem>
             ))}
-          </ReviewsList>
+          </ReviewList>
         ) : (
-          <NoReviews>Sorry, there are no reviews yet.</NoReviews>
+          <NoReviewsMsg>Sorry, no reviews</NoReviewsMsg>
         )}
       </Container>
-    </ReviewsWrap>
+    </ReviewsWrapper>
   );
 };
+
+export default Reviews;

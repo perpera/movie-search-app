@@ -1,16 +1,12 @@
-import { useState, useEffect, Suspense } from 'react';
-import { useLocation, useParams, Outlet } from 'react-router-dom';
-import { getMovieById } from 'movies-api';
-import MovieInfo from 'components/MovieInfo/MovieInfo';
-import {
-  Container,
-  LinkWrapper,
-  MovieInfoLink,
-} from 'components/SharedLayout/SharedLayout.styled';
-import { ScrollUp } from 'tools/ScrollUp/ScrollUp';
+import { Suspense, useEffect, useState } from 'react';
+import { Outlet, useLocation, useParams } from 'react-router-dom';
+import { getMovieById } from 'service/movies-api';
 import { Loader } from 'components/Loader/Loader';
-import { GoBackBtn } from 'components/GoBackBtn/GoBackBtn';
-import { notification } from 'tools/notification';
+import MovieInfo from 'components/MovieInfo/MovieInfo';
+import GoBackBtn from 'components/GoBackBtn/GoBackBtn';
+import { notification } from 'helpers/notification';
+import { Container, AdLinksWrap, AdLink } from 'components/App/App.styled';
+import { ScrollUpBtn } from 'components/ScrollUpBtn/ScrollUpBtn';
 
 const MovieDetails = () => {
   const { movieId } = useParams();
@@ -43,11 +39,11 @@ const MovieDetails = () => {
       {loader && <Loader />}
       <GoBackBtn path={goBackPath} />
       {movieInfo && <MovieInfo movie={movieInfo} />}
-      <LinkWrapper>
-        <MovieInfoLink to="cast">Cast</MovieInfoLink>
-        <MovieInfoLink to="reviews">Reviews</MovieInfoLink>
-      </LinkWrapper>
-      <ScrollUp />
+      <AdLinksWrap>
+        <AdLink to="cast">Cast</AdLink>
+        <AdLink to="reviews">Reviews</AdLink>
+      </AdLinksWrap>
+      <ScrollUpBtn />
       <Suspense fallback={<Loader />}>
         <Outlet />
       </Suspense>

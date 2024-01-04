@@ -1,14 +1,16 @@
-import { Container } from 'components/SharedLayout/SharedLayout.styled';
+import { FaArrowLeftLong } from 'react-icons/fa6';
+import { Container } from 'components/App/App.styled';
 import { GoBackLink } from './GoBackBtn.styled';
-import { CiCircleChevLeft } from 'react-icons/ci';
 
-export const GoBackBtn = ({ path }) => {
+const GoBackBtn = ({ path }) => {
   return (
     <Container>
       <GoBackLink to={path}>
-        <CiCircleChevLeft />
+        <FaArrowLeftLong />
         Go back
       </GoBackLink>
     </Container>
   );
 };
+
+export default GoBackBtn;

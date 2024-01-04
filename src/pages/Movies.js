@@ -1,13 +1,13 @@
-import { useState, useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useLocation, useSearchParams } from 'react-router-dom';
-import { getMoviesBySearch } from 'movies-api';
-import MoviesSearch from 'components/MoviesSearch/MoviesSearch';
-import MoviesList from 'components/MoviesList/MoviesList';
 import { Loader } from 'components/Loader/Loader';
-import { ScrollUp } from 'tools/ScrollUp/ScrollUp';
-import { notification } from 'tools/notification';
-import { smoothScroll } from 'tools/SmoothScroll';
-import { MoviesPagination } from 'components/Pagination/Pagination';
+import MoviesList from 'components/MoviesList/MoviesList';
+import SearchMovies from '../components/SearchMovies/SearchMovies';
+import { getMoviesBySearch } from 'service/movies-api';
+import { notification } from 'helpers/notification';
+import PaginationList from 'components/PaginationList/PaginationList';
+import { ScrollUpBtn } from 'components/ScrollUpBtn/ScrollUpBtn';
+import { smoothScroll } from 'helpers/SmoothScroll';
 
 const Movies = () => {
   const [searchParams, setSearchParams] = useSearchParams();
@@ -63,15 +63,15 @@ const Movies = () => {
   return (
     <>
       {loader && <Loader />}
-      <MoviesSearch search={handleSearch} />
+      <SearchMovies search={handleSearch} />
 
       {pageQty > 1 && (
-        <MoviesPagination pageQty={pageQty} pg={pg} onChange={setPg} />
+        <PaginationList pageQty={pageQty} pg={pg} onChange={setPg} />
       )}
 
       {movies.length > 0 && <MoviesList movies={movies} location={location} />}
 
-      <ScrollUp />
+      <ScrollUpBtn />
     </>
   );
 };

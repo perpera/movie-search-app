@@ -1,42 +1,38 @@
-import styled from 'styled-components';
+import { styled } from 'styled-components';
 
 export const CastWrapper = styled.div`
-  padding: 44px 0;
+  padding: 50px 0;
 `;
 
 export const CastList = styled.ul`
   display: flex;
   flex-wrap: wrap;
-  gap: 16px;
+  gap: 15px;
   padding-bottom: 60px;
-
   @media screen and (min-width: 768px) {
     gap: 30px;
   }
 `;
-
 export const CastItem = styled.li`
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 8px;
+  gap: 10px;
   width: 100%;
 
   @media screen and (min-width: 768px) {
-    width: calc(100% - 60px / 3);
+    width: calc((100% - 60px) / 3);
   }
-
   @media screen and (min-width: 1440px) {
-    width: calc(100% - 90px / 4);
+    width: calc((100% - 90px) / 4);
   }
 `;
-
-export const CastImg = styled.img`
+export const CastImgWrap = styled.img`
   width: 200px;
   height: 200px;
   border-radius: 50%;
   background: url(${props => props.$actor}) no-repeat 0px -25px / cover;
-  background-color: #8bd538;
+  background-color: #1cb114;
 
   @media screen and (min-width: 1440px) {
     width: 300px;
@@ -45,18 +41,16 @@ export const CastImg = styled.img`
 `;
 
 export const CastName = styled.p`
-  color: #f2efee;
+  color: #fff;
   font-size: 20px;
   font-weight: 600;
 `;
-
 export const CastCharacter = styled.p`
-  color: #f2efee;
-  text-align: center;
+  color: #fff;
   font-style: italic;
+  text-align: center;
 `;
-
-export const NoCast = styled.div`
-  color: #f2efee;
+export const NoCastMsg = styled.div`
+  color: #fff;
   font-size: 20px;
 `;

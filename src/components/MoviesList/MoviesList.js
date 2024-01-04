@@ -1,53 +1,64 @@
-import { Container } from 'components/SharedLayout/SharedLayout.styled';
+import defaultPoster from '../../images/def_poster.png';
+import { CiCalendar } from 'react-icons/ci';
+import { Container } from 'components/App/App.styled';
 import {
   List,
   Item,
+  Poster,
   MovieLink,
-  MoviePoster,
-  MovieRelease,
   MovieTitle,
-  RateAvg,
-} from './MoviesList.styled';
-import getPercentage from 'tools/getPercentage';
-import { getReviewColor } from 'tools/getReviewColor';
-import { CiCalendar } from 'react-icons/ci';
-import defPoster from '../../img/def_poster.png';
+  VoteAvr,
+  MovieRelease,
+} from '../MoviesList/MoviesList.styled';
+import makePercentage from 'helpers/makePercentage';
+import { determineReviewColor } from 'helpers/determineReviewColor';
 
 const MoviesList = ({ movies, location }) => {
   return (
-    <Container>
-      <List>
-        {movies.map(
-          ({ id, original_title, poster_path, rate_avg, release_date }) => (
-            <Item key={id}>
-              <MovieLink to={`/movies/${id}`} state={{ from: location }}>
-                <MoviePoster
-                  src={
-                    poster_path
-                      ? `https://image.tmdb.org/t/p/w200${poster_path}`
-                      : defPoster
-                  }
-                  alt={original_title}
-                />
-                <RateAvg
-                  style={{
-                    backgroundColor: getReviewColor(getPercentage(rate_avg)),
-                  }}
-                >
-                  {getPercentage(rate_avg)}
-                </RateAvg>
-                <MovieTitle>{original_title}</MovieTitle>
-                {release_date && (
-                  <MovieRelease>
-                    <CiCalendar /> {release_date}
-                  </MovieRelease>
-                )}
-              </MovieLink>
-            </Item>
-          )
-        )}
-      </List>
-    </Container>
+    <div name={'movieList'}>
+      <Container>
+        <List>
+          {movies.map(
+            ({
+              id,
+              original_title,
+              poster_path,
+              vote_average,
+              release_date,
+            }) => (
+              <Item key={id}>
+                <MovieLink to={`/movies/${id}`} state={{ from: location }}>
+                  <Poster
+                    src={
+                      poster_path
+                        ? `https://image.tmdb.org/t/p/w200${poster_path}`
+                        : defaultPoster
+                    }
+                    alt={original_title}
+                  />
+                  <VoteAvr
+                    style={{
+                      backgroundColor: determineReviewColor(
+                        makePercentage(vote_average)
+                      ),
+                    }}
+                  >
+                    {makePercentage(vote_average)}%
+                  </VoteAvr>
+                  <MovieTitle>{original_title}</MovieTitle>
+                  {release_date && (
+                    <MovieRelease>
+                      <CiCalendar />
+                      {release_date}
+                    </MovieRelease>
+                  )}
+                </MovieLink>
+              </Item>
+            )
+          )}
+        </List>
+      </Container>
+    </div>
   );
 };
 

@@ -1,8 +1,8 @@
 import { useState, useEffect } from 'react';
-import { ScrollUpBtn } from './ScrollUp.styled';
+import { ScrollUpButton } from './ScrollUp.styled';
 import { CiCircleChevUp } from 'react-icons/ci';
 
-export const ScrollUp = () => {
+export const ScrollUpBtn = () => {
   const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
@@ -28,11 +28,11 @@ export const ScrollUp = () => {
   };
 
   return (
-    <ScrollUpBtn
+    <ScrollUpButton
       onClick={scrollToTop}
       style={{ display: isVisible ? 'block' : 'none' }}
     >
       <CiCircleChevUp size={33} fill="#F2EFEE" />
-    </ScrollUpBtn>
+    </ScrollUpButton>
   );
 };

@@ -1,4 +1,4 @@
-export const getReviewColor = percentage => {
+export const determineReviewColor = percentage => {
   let color = '';
   switch (true) {
     case percentage >= 70:

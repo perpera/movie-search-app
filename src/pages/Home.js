@@ -1,35 +1,35 @@
-import { getTrending } from 'movies-api';
-import { Loader } from 'components/Loader/Loader';
 import { useState, useEffect } from 'react';
+import { getTrending } from 'service/movies-api';
 import MoviesList from 'components/MoviesList/MoviesList';
-import { notification } from 'tools/notification';
-import { ScrollUp } from 'tools/ScrollUp/ScrollUp';
+import { Loader } from 'components/Loader/Loader';
+import { notification } from 'helpers/notification';
+import { ScrollUpBtn } from 'components/ScrollUpBtn/ScrollUpBtn';
 
 const Home = () => {
-  const [trending, setTrending] = useState([]);
+  const [trendings, setTrendings] = useState([]);
   const [loader, setLoader] = useState(false);
 
   useEffect(() => {
     setLoader(true);
 
-    const fetchTrending = async () => {
+    const fetchTrendings = async () => {
       try {
         const response = await getTrending();
-        setTrending(response);
+        setTrendings(response);
       } catch ({ message }) {
         notification(message);
       } finally {
         setLoader(false);
       }
     };
-    fetchTrending();
+    fetchTrendings();
   }, []);
 
   return (
     <>
       {loader && <Loader />}
-      {trending.length > 0 && <MoviesList movies={trending} />}
-      <ScrollUp />
+      {trendings.length > 0 && <MoviesList movies={trendings} />}
+      <ScrollUpBtn />
     </>
   );
 };

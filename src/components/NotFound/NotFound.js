@@ -1,17 +1,21 @@
-import { CiFaceFrown } from 'react-icons/ci';
+import { TbFaceIdError } from 'react-icons/tb';
+import {
+  NotFoundWrapper,
+  NotFoundMsg,
+  GoMainPageLink,
+} from './NotFound.styled';
 import { useLocation } from 'react-router-dom';
-import { NotFoundWrapper, NotFoundText, GoToMainPage } from './NotFound.styled';
-
-export const NotFound = () => {
+const NotFound = () => {
   const { pathname } = useLocation();
 
   return (
     <NotFoundWrapper>
-      <NotFoundText>
-        Such page {pathname} doesn't exist!
-        <CiFaceFrown size={60} />
-      </NotFoundText>
-      <GoToMainPage to={'/'}>Go back to the Main Page</GoToMainPage>
+      <NotFoundMsg>
+        The page {pathname} doesn't exist!
+        <TbFaceIdError size={70} />
+      </NotFoundMsg>
+      <GoMainPageLink to={'/'}>Return to the Main Page</GoMainPageLink>
     </NotFoundWrapper>
   );
 };
+export default NotFound;
