@@ -11,10 +11,18 @@ export const List = styled.ul`
 
 export const Item = styled.li`
   position: relative;
-  transition: transform 400ms linear;
+  transition: transform 200ms linear;
   &:hover,
   &:focus {
     transform: scale(1.05);
+  }
+
+  @media screen and (min-width: 768px) {
+    width: calc((100%) - 80px) / 3;
+  }
+
+  @media screen and (min-width: 1440px) {
+    width: calc((100%) - 200px) / 6;
   }
 `;
 
@@ -24,6 +32,15 @@ export const MovieTitle = styled.p`
   font-size: 24px;
   max-width: 300px;
   color: #f2efee;
+
+  @media screen and (min-width: 428px) {
+    max-width: 398px;
+  }
+
+  @media screen and (min-width: 768px) {
+    max-width: 200px;
+    font-size: 21px;
+  }
 `;
 
 export const MovieLink = styled(Link)`
@@ -36,6 +53,9 @@ export const MovieLink = styled(Link)`
 
 export const MoviePoster = styled.img`
   width: 250px;
+
+  @media screen and (min-width: 768px) {
+  }
 `;
 
 export const RateAvg = styled.span`

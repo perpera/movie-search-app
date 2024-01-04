@@ -1,7 +1,7 @@
 import { getTrending } from 'movies-api';
 import { Loader } from 'components/Loader/Loader';
 import { useState, useEffect } from 'react';
-import { MoviesList } from 'components/MoviesList/MoviesList';
+import MoviesList from 'components/MoviesList/MoviesList';
 import { notification } from 'tools/notification';
 import { ScrollUp } from 'tools/ScrollUp/ScrollUp';
 

@@ -1,3 +1,5 @@
-export const getPercentage = number => {
-  return Math.ceil(Number(number) * 10);
+const getPercentage = num => {
+  return Math.ceil(Number(num) * 10);
 };
+
+export default getPercentage;

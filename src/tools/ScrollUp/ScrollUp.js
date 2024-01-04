@@ -32,7 +32,7 @@ export const ScrollUp = () => {
       onClick={scrollToTop}
       style={{ display: isVisible ? 'block' : 'none' }}
     >
-      <CiCircleChevUp />
+      <CiCircleChevUp size={33} fill="#F2EFEE" />
     </ScrollUpBtn>
   );
 };

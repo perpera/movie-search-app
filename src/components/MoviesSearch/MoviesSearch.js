@@ -7,7 +7,7 @@ import {
 } from './MoviesSearch.styled';
 import { CiSearch } from 'react-icons/ci';
 
-export const MoviesSearch = ({ search }) => {
+const MoviesSearch = ({ search }) => {
   const handleSearch = event => {
     event.preventDefault();
     search(event.target.search.value);
@@ -17,18 +17,24 @@ export const MoviesSearch = ({ search }) => {
   return (
     <Container>
       <SearchForm onSubmit={handleSearch}>
-        <SearchInput
-          id="search-input"
-          type="text"
-          name="search"
-          autoComplete="off"
-          required
-        />
-        <SearchInputLabel htmlFor="input">Search movie</SearchInputLabel>
+        <div style={{ position: 'relative' }}>
+          <SearchInput
+            id="search-input"
+            type="text"
+            name="search"
+            autoComplete="off"
+            required
+          />
+          <SearchInputLabel htmlFor="search-input">
+            Search movie
+          </SearchInputLabel>
+        </div>
         <SearchBtn type="submit">
-          <CiSearch />
+          <CiSearch fill="#F2EFEE" size={25} />
         </SearchBtn>
       </SearchForm>
     </Container>
   );
 };
+
+export default MoviesSearch;

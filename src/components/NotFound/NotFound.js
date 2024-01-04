@@ -9,7 +9,7 @@ export const NotFound = () => {
     <NotFoundWrapper>
       <NotFoundText>
         Such page {pathname} doesn't exist!
-        <CiFaceFrown />
+        <CiFaceFrown size={60} />
       </NotFoundText>
       <GoToMainPage to={'/'}>Go back to the Main Page</GoToMainPage>
     </NotFoundWrapper>
