@@ -12,8 +12,8 @@ import {
   SubTitle,
   GenresList,
 } from './MovieInfo.styled';
-import makePercentage from 'helpers/makePercentage';
-import { determineReviewColor } from 'helpers/determineReviewColor';
+import makePercentage from '../../helpers/makePercentage';
+import { determineReviewColor } from '../../helpers/determineReviewColor';
 
 const MovieInfo = ({
   movie: {

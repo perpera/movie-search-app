@@ -1,6 +1,6 @@
 import defaultPoster from '../../images/def_poster.png';
 import { CiCalendar } from 'react-icons/ci';
-import { Container } from 'components/App/App.styled';
+import { Container } from '../../components/App/App.styled';
 import {
   List,
   Item,
@@ -10,8 +10,8 @@ import {
   VoteAvr,
   MovieRelease,
 } from '../MoviesList/MoviesList.styled';
-import makePercentage from 'helpers/makePercentage';
-import { determineReviewColor } from 'helpers/determineReviewColor';
+import makePercentage from '../../helpers/makePercentage';
+import { determineReviewColor } from '../../helpers/determineReviewColor';
 
 const MoviesList = ({ movies, location }) => {
   return (

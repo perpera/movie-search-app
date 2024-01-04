@@ -3,8 +3,8 @@ import { Outlet } from 'react-router-dom';
 import { IoHomeOutline } from 'react-icons/io5';
 import { RiMovie2Line } from 'react-icons/ri';
 import { Header, Nav, StyledNavLink } from './SharedLayout.styled';
-import { Container } from 'components/App/App.styled';
-import { Loader } from 'components/Loader/Loader';
+import { Container } from '../../components/App/App.styled';
+import { Loader } from '../../components/Loader/Loader';
 
 const SharedLayout = () => {
   return (

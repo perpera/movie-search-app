@@ -1,5 +1,5 @@
 import { Pagination } from '@mui/material';
-import { Container } from 'components/App/App.styled';
+import { Container } from '../../components/App/App.styled';
 
 const PaginationList = ({ pageQty, pg, onChange }) => {
   const handlePaginationChange = (_, num) => {

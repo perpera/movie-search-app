@@ -1,9 +1,9 @@
 import { useState, useEffect } from 'react';
-import { getTrending } from 'service/movies-api';
-import MoviesList from 'components/MoviesList/MoviesList';
-import { Loader } from 'components/Loader/Loader';
-import { notification } from 'helpers/notification';
-import { ScrollUpBtn } from 'components/ScrollUpBtn/ScrollUpBtn';
+import { getTrending } from '../service/movies-api';
+import MoviesList from '../components/MoviesList/MoviesList';
+import { Loader } from '../components/Loader/Loader';
+import { notification } from '../helpers/notification';
+import { ScrollUpBtn } from '../components/ScrollUpBtn/ScrollUpBtn';
 
 const Home = () => {
   const [trendings, setTrendings] = useState([]);

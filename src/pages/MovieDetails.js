@@ -1,12 +1,12 @@
 import { Suspense, useEffect, useState } from 'react';
 import { Outlet, useLocation, useParams } from 'react-router-dom';
-import { getMovieById } from 'service/movies-api';
-import { Loader } from 'components/Loader/Loader';
-import MovieInfo from 'components/MovieInfo/MovieInfo';
-import GoBackBtn from 'components/GoBackBtn/GoBackBtn';
-import { notification } from 'helpers/notification';
-import { Container, AdLinksWrap, AdLink } from 'components/App/App.styled';
-import { ScrollUpBtn } from 'components/ScrollUpBtn/ScrollUpBtn';
+import { getMovieById } from '../service/movies-api';
+import { Loader } from '../components/Loader/Loader';
+import MovieInfo from '../components/MovieInfo/MovieInfo';
+import GoBackBtn from '../components/GoBackBtn/GoBackBtn';
+import { notification } from '../helpers/notification';
+import { Container, AdLinksWrap, AdLink } from '../components/App/App.styled';
+import { ScrollUpBtn } from '../components/ScrollUpBtn/ScrollUpBtn';
 
 const MovieDetails = () => {
   const { movieId } = useParams();

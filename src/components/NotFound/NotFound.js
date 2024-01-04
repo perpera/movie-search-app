@@ -5,6 +5,7 @@ import {
   GoMainPageLink,
 } from './NotFound.styled';
 import { useLocation } from 'react-router-dom';
+
 const NotFound = () => {
   const { pathname } = useLocation();
 

@@ -1,13 +1,13 @@
 import { useEffect, useState } from 'react';
 import { useLocation, useSearchParams } from 'react-router-dom';
-import { Loader } from 'components/Loader/Loader';
-import MoviesList from 'components/MoviesList/MoviesList';
+import { Loader } from '../components/Loader/Loader';
+import MoviesList from '../components/MoviesList/MoviesList';
 import SearchMovies from '../components/SearchMovies/SearchMovies';
 import { getMoviesBySearch } from 'service/movies-api';
-import { notification } from 'helpers/notification';
-import PaginationList from 'components/PaginationList/PaginationList';
-import { ScrollUpBtn } from 'components/ScrollUpBtn/ScrollUpBtn';
-import { smoothScroll } from 'helpers/SmoothScroll';
+import { notification } from '../helpers/notification';
+import PaginationList from '../components/PaginationList/PaginationList';
+import { ScrollUpBtn } from '../components/ScrollUpBtn/ScrollUpBtn';
+import { smoothScroll } from '../helpers/SmoothScroll';
 
 const Movies = () => {
   const [searchParams, setSearchParams] = useSearchParams();

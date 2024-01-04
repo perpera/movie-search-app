@@ -1,5 +1,5 @@
 import { IoSearchOutline } from 'react-icons/io5';
-import { Container } from 'components/App/App.styled';
+import { Container } from '../../components/App/App.styled';
 import {
   SearchForm,
   SearchInputWrapper,
