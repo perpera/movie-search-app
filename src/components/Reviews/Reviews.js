@@ -11,7 +11,7 @@ import {
   ReviewItem,
   ReviewAuthor,
   NoReviewsMsg,
-} from 'components/Reviews/Reviews.styled';
+} from '../../components/Reviews/Reviews.styled';
 import { smoothScroll } from '../../helpers/SmoothScroll';
 
 const Reviews = () => {
