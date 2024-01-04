@@ -14,7 +14,7 @@ import {
   CastCharacter,
   NoCastMsg,
 } from './Cast.styled';
-import { smoothScroll } from 'helpers/SmoothScroll';
+import { smoothScroll } from '../../helpers/SmoothScroll';
 
 const Cast = () => {
   const { movieId } = useParams();
