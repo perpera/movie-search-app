@@ -1,4 +1,4 @@
-import { Suspense, useEffect, useState } from 'react';
+import { Suspense, useEffect, useState, useRef } from 'react';
 import { Outlet, useLocation, useParams } from 'react-router-dom';
 import { getMovieById } from '../service/movies-api';
 import { Loader } from '../components/Loader/Loader';
@@ -32,12 +32,12 @@ const MovieDetails = () => {
     fetchMovieById();
   }, [movieId]);
 
-  const goBackPath = location?.state?.from ?? '/';
+  const goBackPath = useRef(location?.state?.from ?? '/');
 
   return (
     <Container>
       {loader && <Loader />}
-      <GoBackBtn path={goBackPath} />
+      <GoBackBtn path={goBackPath.current} />
       {movieInfo && <MovieInfo movie={movieInfo} />}
       <AdLinksWrap>
         <AdLink to="cast">Cast</AdLink>

@@ -28,7 +28,9 @@ const SearchMovies = ({ search }) => {
             required
             autoComplete="off"
           />
-          <SearchInputLabel htmlFor="input">Search movie</SearchInputLabel>
+          <SearchInputLabel htmlFor="search-input">
+            Search movie
+          </SearchInputLabel>
         </SearchInputWrapper>
         <SearchBtn type="submit">
           <IoSearchOutline stroke="#fff" size={25} />
