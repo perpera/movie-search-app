@@ -1,8 +1,8 @@
 {
-  "name": "react-homework-template",
+  "name": "movie-search-app",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://perpera.github.io/goit-react-hw-05-movies/",
+  "homepage": "https://perpera.github.io/movie-search-app/",
   "dependencies": {
     "@emotion/react": "^11.11.1",
     "@emotion/styled": "^11.11.0",
