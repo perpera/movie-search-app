@@ -23,5 +23,5 @@ This is a React-based web application for searching and browsing movies using **
 - React
 - React Router
 - Axios for API requests
-- CSS Modules or plain CSS (or any other styling approach)
+- Plain CSS and styled-components
 - TMDB API: https://www.themoviedb.org/documentation/api
